@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add PPS | Dashboard</title>
+  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="css/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="css/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="css/daterangepicker.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+   <style>.content-wrapper {
+        padding-top: 60px; /* Add padding to prevent content from being hidden behind the navbar */
+    }
+    </style>
+
+   <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="bi bi-list"></i></a>
+        </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href='#' id="btnLogout"><i class="bi bi-power"></i></a>
+        </li>
+    </ul>
+    </nav>
+    <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index.html" class="brand-link">
+      <img src="img/fliec_logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">FLIEC</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="img/jkmLogo.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">JKM</a>
+        </div>
+      </div>
+
+
+      <!-- SidebarSearch Form -->
+
+     <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="dashboard_JKM.html" class="nav-link">
+              <p>
+                STATISTIK PPS
+              </p>
+            </a>
+              <li class="nav-item">
+                <a href="iBantuan.html" class="nav-link">
+                  <p>PERMINTAAN BEKALAN</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="staffDelegation_JKM.html" class="nav-link">
+                  <p>AGIHAN TUGASAN KAKITANGAN</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="infoMangsa.html" class="nav-link">
+                  <p>MAKLUMAT MANGSA</p>
+                </a>
+          </li>
+          <li class="nav-item">
+              <a href="#" class="nav-link active">
+                  <p>PENAMBAHAN PUSAT</p>
+                </a>
+          </li>
+          <li class="nav-item">
+              <a href="ppsStatus.html" class="nav-link">
+                  <p>STATUS PPS</p>
+                </a>
+          </li>
+           <li class="nav-item">
+                          <a href="victimHealth_JKM.html" class="nav-link">
+                              <p>REKOD KESIHATAN MANGSA</p>
+                            </a>
+                      </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+   <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">PENAMBAHAN PUSAT</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="dashboard_JKM.html">Statistik PPS</a></li>
+              <li class="breadcrumb-item active">Penambahan PPS</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    
+    <div class="content">
+     <div class="container mt-3">
+        <div class="form-row">
+            <div class="col">
+                <select id="districtDropdown" class="form-control">
+                    <option selected disabled value="">PILIH MUKIM</option>
+                    <option value="1">CHAAH BAHRU</option>
+                    <option value="2">KAMPUNG BAHRU</option>
+                    <option value="3">LINAU</option>
+                    <option value="4">SRI GADING</option>
+                    <option value="5">LUBOK</option>
+                    <option value="6">SIMPANG KANAN</option>
+                    <option value="7">SIMPANG KIRI</option>
+                    <option value="8">SRI MEDAN</option>
+                    <option value="9">TANJUNG SEMBRONG</option>
+                </select>
+            </div>
+                <div class="col">
+                <button id="submitBtn" class="btn" style="background-color:#1B4A7D; color: white;">Daftar PPS</button>
+            </div>
+        </div>
+        <div id="result" class="mt-1"></div>
+        <div class="container mt-5">
+    <form id="dataForm">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Kapasiti</th>
+                                <th>Alamat</th>
+                                <th>Tarikh Dibuka</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Kategori Lokasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows will be added dynamically -->
+                            <tr>
+                                <td><input type="text" class="form-control" style="text-transform: uppercase;" name="name[]" required></td>
+                                <td><input type="number" class="form-control" name="capacity[]" required></td>
+                                <td><input type="text" class="form-control" style="text-transform: uppercase;" name="address[]" required></td>
+                                <td><input type="date" class="form-control" name="dateOpen[]" required></td>
+                                <td><input type="text" class="form-control" name="latitude[]" required></td>
+                                <td><input type="text" class="form-control" name="longitude[]" required></td>
+                                <td>
+                                    <select class="form-control" name="category[]" required>
+                                        <option value="" disabled selected>PILIH KATEGORI</option>
+                                        <option value="1">SEKOLAH</option>
+                                        <option value="2">DEWAN</option>
+                                        <option value="3">MASJID</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn" style="background-color:#1B4A7D; color: white;" id="addRow"><i class="bi bi-plus-lg"></i></button>
+                <button type="submit" class="btn btn-success">Tambah PPS</button>
+            </form>
+</div>
+</div>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <script>
+$(document).ready(function () {
+    // Hide the form initially
+    $('#dataForm').hide();
+
+    // Reset the district dropdown to the disabled state on page load
+    $('#districtDropdown').val('');
+
+    // Event handler for submit button
+    $('#submitBtn').on('click', function () {
+        const selectedDistrict = $('#districtDropdown').val();
+        if (selectedDistrict !== null && selectedDistrict !== '') {
+            // Show the form
+            $('#dataForm').show();
+        } else {
+            Swal.fire({
+            icon: 'error',
+            title: 'SILA PILIH MUKIM!',
+            showConfirmButton: false,
+            timer: 7000
+        });
+        }
+    });
+
+    // Event handler to add rows dynamically
+    $('#addRow').click(function () {
+        $('#dataTable tbody').append(`
+            <tr>
+                 <td><input type="text" class="form-control" style="text-transform: uppercase;" name="name[]" required></td>
+                                <td><input type="number" class="form-control" name="capacity[]" required></td>
+                                <td><input type="text" class="form-control" style="text-transform: uppercase;" name="address[]" required></td>
+                                <td><input type="date" class="form-control" name="dateOpen[]" required></td>
+                                <td><input type="text" class="form-control" name="latitude[]" required></td>
+                                <td><input type="text" class="form-control" name="longitude[]" required></td>
+                <td>
+                    <select class="form-control" name="category[]" required>
+                        <option value=""disabled selected>PILIH KATEGORI</option>
+                        <option value="1">SEKOLAH</option>
+                        <option value="2">DEWAN</option>
+                        <option value="3">MASJID</option>
+                    </select>
+                </td>
+            </tr>
+        `);
+    });
+
+   $('#dataForm').submit(function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Serialize form data
+    var formData = $(this).serialize();
+    // Append selected district to form data
+    formData += `&pps_district=${$('#districtDropdown').val()}`;
+
+    // Submit form data via AJAX
+    $.ajax({
+        type: 'POST',
+        url: 'addPPSData.php',
+        data: formData,
+        success: function (response) {
+            console.log('Server response:', response); // Log server response for debugging
+            if (response.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'PPS telah berjaya ditambah!',
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 7000
+                });
+                setTimeout(function () {
+                    location.reload();
+                }, 6000);
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ralat!',
+                    toast: true, 
+                    position: 'top-end',
+                    text: response.error || 'PPS tidak berjaya ditambah. Sila cuba lagi.'
+                });
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('AJAX error:', error); // Log error for debugging
+            console.error('Response text:', xhr.responseText); // Log the full response text
+            Swal.fire({
+                icon: 'error',
+                title: 'Ralat!',
+                toast: true, 
+                position: 'top-end',
+                text: 'PPS tidak berjaya ditambah. Sila cuba lagi.'
+            });
+        }
+    });
+});
+
+
+   $('#btnLogout').click(function (e) {
+    e.preventDefault();
+    
+    $.ajax({
+        url: 'logout.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function (response) {
+            if (response.success) {
+                // If logout is successful, redirect to index.html
+                window.location.href = 'index.html';
+            } else {
+                alert('Logout failed. Please try again.');
+            }
+        },
+        error: function () {
+            alert('An error occurred while trying to log out.');
+        }
+    });
+});
+});
+
+        
+
+</script>
+
+
+  
+<!-- jQuery -->
+<script src="css/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="css/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="css/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="css/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="css/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="css/jquery.vmap.min.js"></script>
+<script src="css/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="css/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="css/moment.min.js"></script>
+<script src="css/daterangepicker.js"></script>
+<!-- overlayScrollbars -->
+<script src="css/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="css/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="css/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+      </div>
+    </div>
+    </div>
+    </body>
+</html>

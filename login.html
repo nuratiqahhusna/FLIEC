@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Link to your CSS file -->
+  <link rel="stylesheet" href="css/styleLogin.css">
+    <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <!-- Wave Background -->
+
+  <div class="login-container">
+    <section class='login' id='login'>
+      <div class='head'>
+        <h1 class='company'>SELAMAT DATANG KE FliEC</h1>
+      </div>
+      <div class='form'>
+        <form id="loginForm">
+          <label for="uname"><b>Nama Pengguna</b></label>
+          <input type="text" placeholder='Sila masukkan nama pengguna anda..' class='text' id='username' name="uname" required><br>
+          <label for="password" ><b>Kata Laluan</b></label>
+          <input type="password" placeholder='Sila masukkan kata laluan anda..' class='password' id="password">
+          <div id="errorMessage" class="alert alert-danger mt-3" style="display: none;">Nama Pengguna atau Kata Laluan yang salah! Sila cuba sekali lagi.</div>
+          <br>
+      
+          <a href="#" class='btn-login' id='do-login'>Log Masuk</a><p>
+          <label>
+            <input type="checkbox" class="form-check-input" id="rememberMe"> Remember me
+          </label>
+          
+        </form>
+      </div>
+    </section>
+  </div>
+  <!-- Your Content Section -->
+  <!-- partial -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('do-login').addEventListener('click', function(event) {
+      event.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const rememberMe = document.getElementById('rememberMe').checked;
+      
+      if (username === 'JKM' && password === '2222') {
+        Swal.fire({
+                            icon: 'success',
+                            title: 'Anda telah berjaya log masuk!',
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000 // 3 seconds
+                        });
+        
+        if (rememberMe) {
+          localStorage.setItem('rememberedUsername', username);
+        } else {
+          localStorage.removeItem('rememberedUsername');
+        }
+        
+        window.location.href = 'dashboard_JKM.html'; // Redirect to JKM page
+      } else if (username === 'KKM' && password === '1111') {
+        Swal.fire({
+                            icon: 'success',
+                            title: 'Anda telah berjaya log masuk!',
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000 // 3 seconds
+                        });
+        
+        if (rememberMe) {
+          localStorage.setItem('rememberedUsername', username);
+        } else {
+          localStorage.removeItem('rememberedUsername');
+        }
+        
+        window.location.href = 'dashboard_KKM.html'; // Redirect to KKM page
+      } else {
+           Swal.fire({
+                            icon: 'error',
+                            title: 'Nama Pengguna atau Kata Laluan yang salah! Sila cuba sekali lagi.',
+                            //toast: true,
+                            //position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 2000 // 3 seconds
+                        });
+        
+      }
+    });
+  </script>
+  <!-- End Content Section -->
+</body>
+</html>

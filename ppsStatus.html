@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Status PPS | Dashboard</title>
+  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="css/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="css/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="css/daterangepicker.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+   
+   <style>.content-wrapper {
+        padding-top: 60px; /* Add padding to prevent content from being hidden behind the navbar */
+    }
+    </style>
+
+   <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="bi bi-list"></i></a>
+        </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href='#' id="btnLogout"><i class="bi bi-power"></i></a>
+        </li>
+    </ul>
+    </nav>
+    <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index.html" class="brand-link">
+      <img src="img/fliec_logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">FLIEC</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="img/jkmLogo.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">JKM</a>
+        </div>
+      </div>
+
+
+      <!-- SidebarSearch Form -->
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="dashboard_JKM.html" class="nav-link">
+              <p>
+                STATISTIK PPS
+              </p>
+            </a>
+              <li class="nav-item">
+                <a href="iBantuan.html" class="nav-link">
+                  <p>PERMINTAAN BEKALAN</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="staffDelegation_JKM.html" class="nav-link">
+                  <p>AGIHAN TUGASAN KAKITANGAN</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="infoMangsa.html" class="nav-link">
+                  <p>MAKLUMAT MANGSA</p>
+                </a>
+          </li>
+          <li class="nav-item">
+              <a href="addPPS.html" class="nav-link">
+                  <p>PENAMBAHAN PUSAT</p>
+                </a>
+          </li>
+          <li class="nav-item active">
+              <a href="#" class="nav-link active">
+                  <p>STATUS PPS</p>
+                </a>
+          </li>
+           <li class="nav-item">
+                          <a href="victimHealth_JKM.html" class="nav-link">
+                              <p>REKOD KESIHATAN MANGSA</p>
+                            </a>
+                      </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+   <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">STATUS PPS</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="dashboard_JKM.html">Statistik PPS</a></li>
+              <li class="breadcrumb-item active">Status PPS</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    
+    <div class="content">
+    <div class="container mt-3">
+        <div class="form-row">
+            <div class="col">
+                <select id="districtDropdown" class="form-control">
+                    <option selected disabled value="">PILIH MUKIM</option>
+                    <option value="1">CHAAH BAHRU</option>
+                    <option value="2">KAMPUNG BAHRU</option>
+                    <option value="3">LINAU</option>
+                    <option value="4">SRI GADING</option>
+                    <option value="5">LUBOK</option>
+                    <option value="6">SIMPANG KANAN</option>
+                    <option value="7">SIMPANG KIRI</option>
+                    <option value="8">SRI MEDAN</option>
+                    <option value="9">TANJUNG SEMBRONG</option>
+                </select>
+            </div>
+            <div class="col">
+                <button id="submitBtn" class="btn" style="background-color:#1B4A7D; color: white;">Lihat PPS</button>
+            </div>
+        </div>
+        <div id="result" class="mt-1"></div>
+        <!-- TABLE -->
+        <div class="container mt-5" id="tableSection" style="display: none">
+            <div class="col-sm-12">
+                <div class="card card-primary">
+                    <div class="card-header" style="background-color: #1E3A57; color: white;">
+                        <h3 class="card-title"></h3>
+                    </div>
+                    <div class="card-body">
+                        <table id="infoTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Kapasiti</th>
+                                    <th>Tarikh Dibuka</th>
+                                    <th>Tarikh Ditutup</th>
+                                    <th>Status</th>
+                                    <th>Alamat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Table rows will be inserted here dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       
+       <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('districtDropdown').selectedIndex = 0;
+});
+
+document.getElementById('submitBtn').addEventListener('click', function() {
+    var districtId = document.getElementById('districtDropdown').value;
+
+    if (districtId) {
+        fetch('fetch_data_pps.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                districtId: districtId
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                var tableSection = document.getElementById('tableSection');
+                var tableBody = document.querySelector('#infoTable tbody');
+                tableBody.innerHTML = ''; // Clear previous data
+
+                data.forEach(function(item) {
+                    var openDate = item.pps_open_date ? item.pps_open_date : '';
+                    var closeDate = item.pps_close_date ? item.pps_close_date : '';
+                    var status = item.pps_status === 'AKTIF' ? 'Aktif' : 'Tidak-Aktif';
+                    var badgeClass = status === 'Aktif' ? 'badge-success' : 'badge-danger';
+
+                    var row = `<tr>
+                        <td>${item.pps_name}</td>
+                        <td>${item.pps_capacity}</td>
+                        <td><input type="date" id="openDatePps_${item.pps_id}" class="form-control openDatePps" name="openDatePps" value="${openDate}" data-pps-id="${item.pps_id}"></td>
+                        <td><input type="date" id="closeDatePps_${item.pps_id}" class="form-control closeDatePps" name="closeDatePps" value="${closeDate}" data-pps-id="${item.pps_id}"></td>
+                        <td><span id="statusBadge_${item.pps_id}" class="badge ${badgeClass}">${status}</span></td>
+                        <td>${item.pps_address}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+
+                // Add event listeners after the rows are created
+                document.querySelectorAll('.openDatePps').forEach(function(input) {
+                    input.addEventListener('change', function() {
+                        var ppsId = this.getAttribute('data-pps-id');
+                        var newOpenDate = this.value;
+                        console.log(`Updating open date for PPS ID ${ppsId} to ${newOpenDate}`);
+                        saveDateToDatabase(ppsId, 'open_date', newOpenDate);
+                    });
+                });
+
+                document.querySelectorAll('.closeDatePps').forEach(function(input) {
+                    input.addEventListener('change', function() {
+                        var ppsId = this.getAttribute('data-pps-id');
+                        var newCloseDate = this.value;
+                        console.log(`Updating close date for PPS ID ${ppsId} to ${newCloseDate}`);
+                        saveDateToDatabase(ppsId, 'close_date', newCloseDate);
+                    });
+                });
+
+                tableSection.style.display = 'block';
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+        alert('Please select a district');
+    }
+});
+
+function saveDateToDatabase(ppsId, dateType, newDate) {
+    console.log('Sending data to save:', { ppsId, dateType, newDate });
+
+    fetch('save_date_pps.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            ppsId: ppsId,
+            dateType: dateType,
+            newDate: newDate
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log(`${dateType} updated successfully.`);
+            updateStatusBadge(ppsId);
+        } else {
+            console.error(`Failed to update ${dateType}:`, data.error);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function updateStatusBadge(ppsId) {
+    var openDate = document.getElementById(`openDatePps_${ppsId}`).value;
+    var closeDate = document.getElementById(`closeDatePps_${ppsId}`).value;
+    var status;
+    var badgeClass;
+
+    if (!openDate && !closeDate) {
+        status = 'Tidak-Aktif';
+        badgeClass = 'badge-danger';
+    } else if (openDate && !closeDate) {
+        status = 'Aktif';
+        badgeClass = 'badge-success';
+    } else if (openDate && closeDate && new Date(closeDate) >= new Date()) {
+        status = 'Aktif';
+        badgeClass = 'badge-success';
+    } else if (openDate && closeDate && new Date(closeDate) < new Date()) {
+        status = 'Tidak-Aktif';
+        badgeClass = 'badge-danger';
+    } else {
+        status = 'Tidak-Aktif';
+        badgeClass = 'badge-danger';
+    }
+
+    var statusBadge = document.getElementById(`statusBadge_${ppsId}`);
+    statusBadge.textContent = status;
+    statusBadge.className = `badge ${badgeClass}`;
+}
+ $('#btnLogout').click(function (e) {
+    e.preventDefault();
+    
+    $.ajax({
+        url: 'logout.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function (response) {
+            if (response.success) {
+                // If logout is successful, redirect to index.html
+                window.location.href = 'index.html';
+            } else {
+                alert('Logout failed. Please try again.');
+            }
+        },
+        error: function () {
+            alert('An error occurred while trying to log out.');
+        }
+    });
+});
+           
+</script>
+
+
+<!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="css/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="css/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="css/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="css/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="css/jquery.vmap.min.js"></script>
+<script src="css/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="css/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="css/moment.min.js"></script>
+<script src="css/daterangepicker.js"></script>
+<!-- overlayScrollbars -->
+<script src="css/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="css/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="css/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+      </div>
+    </div>
+    </body>

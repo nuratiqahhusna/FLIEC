@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styleRegistration.css">
+    <link rel="icon" href="css/ionicons.min.css" type="image/x-icon">
+
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <ul class="nav justify-content-center" style="height: 60px; position: fixed; top: 0; width: 100%; z-index: 1000; background-color: #fff">
+        <li class="nav-item">
+            <a class="nav-link"><strong>BORANG PENDAFTARAN PPS</strong></a>
+        </li>
+    </ul>
+    <div class="bodyBg">
+        <div class="slider-thumb">
+            <br><br>
+
+            <br><br><br>
+            <div class="containerInput">
+
+                <form method="post" action="db_newVictimRegister.php" id="victimForm" class="needs-validation" novalidate>
+
+                    <p style="font-size: 20px; background-color: #e7f1f2; text-align: center"><strong>Maklumat Pendaftaran</strong></p>
+                    <div class="mb-3">
+                        <div class="form-group row">
+                            <label for="date" class="col-sm-4 col-form-label">1. Tarikh Masuk PPS</label>
+                            <div class="col-sm-8">
+                                <input type="date" id="datePps" class="form-control" name="datePps" required>
+                                <div class="invalid-feedback" style=" margin-left: 15px;">
+                                    Sila pilih tarikh.
+                                </div>
+                            </div>
+                        </div>
+                        <label for="inputPpsName">2. Nama Pusat Pemindahan</label>
+                        <div class="content">
+                            <div class="container mt-3">
+                                <div class="form-row">
+                                    <div class="col">
+                                        <select id="districtDropdown" class="form-control">
+                                            <option selected disabled>PILIH MUKIM</option>
+                                            <option value="1">CHAAH BAHRU</option>
+                                            <option value="2">KAMPUNG BAHRU</option>
+                                            <option value="3">LINAU</option>
+                                            <option value="4">SRI GADING</option>
+                                            <option value="5">LUBOK</option>
+                                            <option value="6">SIMPANG KANAN</option>
+                                            <option value="7">SIMPANG KIRI</option>
+                                            <option value="8">SRI MEDAN</option>
+                                            <option value="9">TANJUNG SEMBRONG</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <select id="cityDropdown" class="form-control">
+                                            <option selected disabled>PILIH PPS</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+
+                        <p style="font-size: 20px; background-color: #e7f1f2; text-align: center"><strong>Maklumat Mangsa</strong></p>
+                        <div class="mb-3">
+                            <label for="victimName" class="form-label">1. Nama Wakil Keluarga</label>
+                            <input type="text" class="form-control" style="text-transform: uppercase;" id="victimName" name="victimName" placeholder="ABD MAJID BIN OMAR" required>
+                            <div class="invalid-feedback" style=" margin-left: 15px;">
+                                Nama wakil keluarga perlu diisi.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="formattedIcNo" class="form-label">2. No K/P</label>
+                            <input type="text" class="form-control" id="formattedIcNo" maxlength="15" oninput="formatInputIcNo()" name="victimIcNo" placeholder="090203-01-0897" required>
+                            <div class="invalid-feedback" style=" margin-left: 15px;">
+                                Kad pengenalan perlu diisi.
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col"><label for="victimGender" class="form-label">3. Jantina</label>
+                                <div class="form-check" style="margin-left: 15px">
+                                    <input class="form-check-input" type="radio" name="victimGender" id="genderMan" value="L" checked>
+                                    <label class="form-check-label" for="genderMan">
+                                        Lelaki
+                                    </label>
+                                </div>
+                                <div class="form-check" style="margin-left: 15px">
+                                    <input class="form-check-input" type="radio" name="victimGender" id="genderWoman" value="P">
+                                    <label class="form-check-label" for="genderWoman">
+                                        Perempuan
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col"><label for="victimFamilyStatus" class="form-label">4. Status</label>
+                                <div class="form-check" style="margin-left: 15px">
+                                    <input class="form-check-input" type="radio" name="victimFamilyStatus" id="family" value="FAMILY" checked>
+                                    <label class="form-check-label" for="family">
+                                        Berkeluarga
+                                    </label>
+                                </div>
+                                <div class="form-check" style="margin-left: 15px">
+                                    <input class="form-check-input" type="radio" name="victimFamilyStatus" id="single" value="SINGLE">
+                                    <label class="form-check-label" for="single">
+                                        Berseorangan
+                                    </label>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="mb-3">
+                            <label for="formattedPhoneNo" class="form-label">5. No Telefon</label>
+                            <input type="text" class="form-control" id="formattedPhoneNo" value="+60 " oninput="formatInputPhoneNo()" name="victimPhoneNo" maxlength="15" required>
+                            <div class="invalid-feedback" style=" margin-left: 15px;">
+                                Nombor telefon perlu diisi.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="victimAddress" class="form-label">6. Alamat</label>
+                            <textarea class="form-control" id="victimAddress" style="text-transform: uppercase;" name="victimAddress" rows="3" placeholder="40, JALAN KAMPUNG CERIA KOTA MELUT 83000 BATU PAHAT, JOHOR" required></textarea>
+                            <div class="invalid-feedback" style=" margin-left: 15px;">
+                                Alamat rumah perlu diisi.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="victimSpecialCategory[]" class="form-label">5. Kategori</label>
+                            <p style="color: #808080; font-style: italic;"> &nbsp;&nbsp;(Tandakan jika berkenaan. Kategori boleh dipilih lebih daripada satu)</p>
+                            <table class='table borderless'>
+                                <tr>
+                                    <th style="width: 58%; padding-left: 10px;">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="OKU" name="victimSpecialCategory[]" id="oku">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                OKU
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th style="width: 58%; padding-left: 10px;">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="MENGANDUNG" name="victimSpecialCategory[]" id="pregnant">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Mengandung
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="MELAKUKAN PEMBEDAHAN" name="victimSpecialCategory[]" id="surgery">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Melakukan pembedahan<p style="font-size: 12px; color: grey; display: inline;"> (Dalam masa seminggu)</p>
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="SAKIT TERLANTAR" name="victimSpecialCategory[]" id="sakitTerlantar">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Sakit terlantar
+                                            </label>
+                                        </div>
+                                    </th>
+
+                            </table>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="victimAdditionalNeed[]">6. Keperluan khas</label>
+                            <p style="color: #808080; font-style: italic;"> &nbsp;&nbsp;(Tandakan jika perlu. Keperluan khas boleh dipilih lebih daripada satu)</p>
+                            <table class='table borderless'>
+                                <tr>
+                                    <th style="width: 58%; padding-left: 10px;">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="Kerusi Roda" name="victimAdditionalNeed[]" id="kerusiRoda">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Kerusi roda
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th style="width: 50%; padding-left: 10px;">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="Alat Sokongan" name="victimAdditionalNeed[]" id="alatSokongan">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Alat sokongan
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th style="width: 58%; padding-left: 10px;">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="Lampin Pakai Buang" name="victimAdditionalNeed[]" id="lampinPakaiBuang">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                Lampin pakai buang<p style="font-size: 12px; color: grey; display: inline;"> (Kanak-kanak dan orang dewasa)</p>
+                                            </label>
+                                        </div>
+                                    </th>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                        <br><br>
+                        <p style="font-size: 20px; background-color: #e7f1f2; text-align: center"><strong>Maklumat Kesihatan</strong></p>
+
+                        <p style="font-weight: normal;">Jenis Penyakit Berjangkit </p>
+                        <p style="font-style: italic; color: grey; ">(Sila tandakan kotak jika anda sedang mengalami penyakit-penyakit berikut)</p>
+                        <table class='table borderless'>
+
+                            <tr>
+
+                                <th style="width: 58%; padding-left: 10px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="AGE" name="victimDisease[]" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Gastroentiritis / Cirit-birit berjangkit
+                                        </label>
+                                    </div>
+                                </th>
+                                <th style="width: 58%; padding-left: 10px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="ARI/URTI" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked" style="font-style: italic;">
+                                            Acute Respiratory Infection (ARI) / Upper Respiratory Tract Infection (URTI)
+                                        </label>
+                                    </div>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="KONJUNKTIVITIS" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Konjunktivitis
+                                        </label>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="PENYAKIT KULIT" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Penyakit kulit
+                                        </label>
+                                    </div>
+                                </th>
+
+                            </tr>
+
+                            <tr>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="DEMAM (TIADA GEJALA LAIN)" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Demam (tiada gejala lain)
+                                        </label>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="HFMD" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Penyakit tangan kaki dan mulut
+                                        </label>
+                                    </div>
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="TIFOID" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Tifoid
+                                        </label>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="HEPATITIS A" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Hepatitis A
+                                        </label>
+                                    </div>
+                                </th>
+
+                            </tr>
+
+                            <tr>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="KOLERA" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Kolera
+                                        </label>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="CHICKEN POX" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked" style="font-style: italic;">
+                                            Chicken pox
+                                        </label>
+                                    </div>
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="LEPTOSPIROSIS" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Kencing tikus
+                                        </label>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="MELIOIDOSIS" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Melioidosis
+                                        </label>
+                                    </div>
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="DENGGI" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Denggi
+                                        </label>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="victimDisease[]" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked" value="LAIN-LAIN">
+                                            Lain-lain<p style="font-style: italic; color: grey;">(Sila nyatakan)</p>
+                                        </label>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" style="text-transform: uppercase;" aria-label="Recipient's username" aria-describedby="basic-addon2" id="diseaseNotes" name="diseaseNotes">
+                                    </div>
+                                </th>
+
+                            </tr>
+                        </table>
+
+                        <!--noninfectious disease-->
+                        <h6 style="font-weight: normal;">Jenis Penyakit Tidak Berjangkit</h6>
+                        <table class='table borderless'>
+                            <tr>
+                                <th style="width: 50%; padding-left: 10px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="DIABETES MELITUS" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Kencing manis
+                                        </label>
+                                    </div>
+                                </th>
+                                <th style="width: 50%; padding-left: 10px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="HYPERTENSION" id="flexCheckChecked" name="victimDisease[]">
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Darah tinggi
+                                        </label>
+                                    </div>
+                                </th>
+
+                            </tr>
+
+                        </table>
+                        <p style="font-weight: bold; display: inline">Deklarasi COVID-19</p>
+                        <p style="font-style: italic; color: grey; display: inline">(Dalam tempoh 2 minggu)</p>
+                        <table class='table borderless'>
+                            <tr>
+                                <th>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="YES" name="victimCovidInfo" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Ya
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="NO" name="victimCovidInfo" id="flexRadioDefault2" checked>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Tidak
+                                        </label>
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                        <input type="hidden" name="submit" value="1">
+                        <div style="text-align: center">
+                            <button type="submit" name="submit" class="btn btn-primary">
+                                Hantar
+                            </button>
+                        </div>
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        //format input for icNo
+        function formatInputIcNo() {
+            const input = document.getElementById('formattedIcNo');
+            let value = input.value.replace(/[^0-9]/g, ''); // Remove all non-numeric characters
+
+            if (value.length === 13) {
+                value = value.slice(0, 6) + '-' + value.slice(6, 9) + '-' + value.slice(9);
+            } else if (value.length === 12) {
+                value = value.slice(0, 6) + '-' + value.slice(6, 8) + '-' + value.slice(8);
+            }
+            input.value = value;
+        }
+
+
+        //calculate age based on ic
+        function calculateAge() {
+            let icNumber = document.getElementById('formattedIcNo').value.trim();
+            let birthYearDigits = icNumber.substring(0, 2);
+            let currentYear = new Date().getFullYear();
+            let lastTwoDigits = currentYear % 100;
+            let birthYear = parseInt('19' + birthYearDigits);
+            let victimAge;
+            if (birthYearDigits > lastTwoDigits) {
+                victimAge = currentYear - birthYear;
+            } else {
+                victimAge = lastTwoDigits - birthYearDigits;
+            }
+
+            return victimAge;
+
+        }
+
+        function getAgeCategory(age) {
+            if (age <= 4) {
+                return "BAYI";
+            } else if (age <= 17) {
+                return "KANAK-KANAK";
+            } else if (age >= 18 && age < 60) {
+                return "DEWASA";
+            } else {
+                return "WARGA EMAS";
+            }
+        }
+
+
+        //filter phone no (no other than number)
+        function formatInputPhoneNo() {
+            const input = document.getElementById('formattedPhoneNo');
+            let value = input.value;
+
+            // Remove all non-numeric characters except the + at the start
+            value = '+60 ' + value.slice(4).replace(/[^\d]/g, '');
+
+            if (value.length > 6) {
+                value = value.slice(0, 6) + '-' + value.slice(6);
+            }
+            if (value.length > 10) {
+                value = value.slice(0, 10) + ' ' + value.slice(10);
+            }
+
+            input.value = value;
+        }
+
+        function preventDeletion(event) {
+            const input = document.getElementById('formattedPhoneNo');
+            const cursorPos = input.selectionStart;
+
+            // Prevent backspace/delete if cursor is within the first 4 characters
+            if (cursorPos <= 4 && (event.key === 'Backspace' || event.key === 'Delete')) {
+                event.preventDefault();
+            }
+
+            // Ensure +60 prefix is not deleted
+            if ((event.key === 'Backspace' && cursorPos === 5) || (event.key === 'Delete' && cursorPos === 4)) {
+                event.preventDefault();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneInput = document.getElementById('formattedPhoneNo');
+
+            // Ensure the input starts with "+60 " and is correctly formatted on page load
+            formatInputPhoneNo();
+
+            phoneInput.addEventListener('focus', function() {
+                setTimeout(function() {
+                    phoneInput.selectionStart = phoneInput.selectionEnd = phoneInput.value.length;
+                }, 0);
+            });
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reset district dropdown to default value on page load
+            document.getElementById('districtDropdown').selectedIndex = 0;
+
+            // Handle district selection change
+            document.getElementById('districtDropdown').addEventListener('change', function() {
+                const pps_district = this.value;
+
+                if (pps_district) {
+                    const formData = new FormData();
+                    formData.append('pps_district', pps_district);
+
+                    fetch('fetch_pps.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            const cityDropdown = document.getElementById('cityDropdown');
+                            cityDropdown.innerHTML = '<option value="" disabled selected>PILIH PPS</option>'; // Reset the options
+
+                            data.forEach(city => {
+                                const option = document.createElement('option');
+                                option.value = city.pps_id;
+                                option.text = city.pps_name;
+                                cityDropdown.add(option);
+                            });
+                        })
+                        .catch(error => console.error('Error:', error));
+                }
+            });
+
+
+            // Handle form submission with Bootstrap validation
+            const form = document.getElementById('victimForm');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+                event.stopPropagation(); // Stop further event handling
+
+                if (!form.checkValidity()) {
+                    // If the form is invalid, show Bootstrap validation styles
+                    form.classList.add('was-validated');
+                    return; // Exit the function, do not proceed with form submission
+                }
+
+                const formData = new FormData(this);
+                const cityDropdown = document.getElementById('cityDropdown');
+                const selectedPpsId = cityDropdown.value;
+
+                if (!selectedPpsId) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Sila pilih PPS.'
+                    });
+                    return;
+                }
+
+                const victimIcNo = document.getElementById('formattedIcNo').value;
+                const victimAge = calculateAge(victimIcNo);
+                const victimAgeCategory = getAgeCategory(victimAge);
+
+                formData.append('pps_id', selectedPpsId);
+                formData.append('victimAge', victimAge);
+                formData.append('victimAgeCategory', victimAgeCategory);
+                const checkboxes = document.querySelectorAll('input[name="victimSpecialCategory[]"]:checked');
+                const selectedCategories = Array.from(checkboxes).map(cb => cb.value);
+                formData.append('victimSpecialCategory', selectedCategories.join(', '));
+
+                fetch('db_newVictimRegister.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.text()) // Fetch the raw text response
+                    .then(data => {
+                        console.log('Raw Response:', data);
+                        try {
+                            const json = JSON.parse(data); // Attempt to parse JSON
+                            if (json.status === 'success') {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Maklumat anda berjaya disimpan.',
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 7000
+                                });
+                                setTimeout(() => {
+                                    Swal.fire({
+                                        title: 'Adakah anda ingin mengisi maklumat ahli keluarga?',
+                                        showConfirmButton: true, // Show the confirm button
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Ya',
+                                        cancelButtonText: 'Tidak',
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.href = 'newVictimRegisterFam.html';
+                                        } else {
+                                            window.location.href = 'homeUser.html';
+                                        }
+                                    });
+                                }, 2000);
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Maaf',
+                                    text: 'Maklumat anda tidak berjaya disimpan. Sila cuba lagi.',
+                                });
+                            }
+                        } catch (error) {
+                            console.error('JSON Parsing Error:', error, data);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Unexpected response from server.'
+                            });
+                        }
+                    })
+            });
+        });
+
+    </script>
+
+
+</body>
+
+
+</html>

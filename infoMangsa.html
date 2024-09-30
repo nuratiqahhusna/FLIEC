@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard | Info Mangsa</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/adminlte.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+         .content-wrapper {
+        padding-top: 60px; /* Add padding to prevent content from being hidden behind the navbar */
+    }
+       #dynamicTable {
+    border-collapse: collapse;
+    width: 100%;
+        }
+
+    #dynamicTable th,
+    #dynamicTable td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    #dynamicTable th {
+        background-color: #f2f2f2;
+    }
+     #customText {
+            display: none;
+            font-weight: bold; /* Make the text bold */
+            margin-bottom: 20px; /* Add space below the custom text */
+            font-size: 12px;
+        }
+</style>
+</head>
+
+<body class="hold-transition white-mode sidebar-mini layout-fixed">
+    <div class="wrapper">
+       
+           <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="bi bi-list"></i></a>
+        </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href='#' id="btnLogout"><i class="bi bi-power"></i></a>
+        </li>
+    </ul>
+    </nav>
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-link">
+                <img src="img/fliec_logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">FLIEC</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="img/jkmLogo.png" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">JKM</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <a href="dashboard_JKM.html" class="nav-link">
+                                <p>
+                                    STATISTIK PPS
+                                </p>
+                            </a>
+                        <li class="nav-item">
+                            <a href="iBantuan.html" class="nav-link">
+                                <p>PERMINTAAN BEKALAN</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="staffDelegation_JKM.html" class="nav-link">
+                                <p>AGIHAN TUGASAN KAKITANGAN</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="infoMangsa.html" class="nav-link  active">
+                                <p>MAKLUMAT MANGSA</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./addPPS.html" class="nav-link">
+                                <p>PENAMBAHAN PUSAT</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="ppsStatus.html" class="nav-link">
+                              <p>STATUS PPS</p>
+                            </a>
+                      </li>
+                       <li class="nav-item">
+                          <a href="victimHealth_JKM.html" class="nav-link">
+                              <p>REKOD KESIHATAN MANGSA</p>
+                            </a>
+                      </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">MAKLUMAT MANGSA</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="dashboard_JKM.html">Statistik PPS</a></li>
+                                <li class="breadcrumb-item active">Maklumat Mangsa</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            <!--search box-->
+            <div class="content">
+                        <div class="container mt-6">
+                            <div class="form-row">
+                                <div class="col-3 mb-3">
+                                    <select id="districtDropdown" class="form-control">
+                                        <option value ="" selected disabled>PILIH MUKIM</option>
+                                        <option value="1">CHAAH BAHRU</option>
+                                        <option value="2">KAMPUNG BAHRU</option>
+                                        <option value="3">LINAU</option>
+                                        <option value="4">SRI GADING</option>
+                                        <option value="5">LUBOK</option>
+                                        <option value="6">SIMPANG KANAN</option>
+                                        <option value="7">SIMPANG KIRI</option>
+                                        <option value="8">SRI MEDAN</option>
+                                        <option value="9">TANJUNG SEMBRONG</option>
+                                    </select>
+                                </div>
+                                <div class="col-3">
+                                    <select id="cityDropdown" class="form-control">
+                                        <option selected disabled>PILIH PPS</option>
+                                    </select>
+                                </div>
+                                <div class="mr-3 ml-3 mb-3">
+                <button id="submitBtn" class="btn" style="background-color:#1B4A7D; color: white;">Lihat Info</button>
+                </div>
+                <div>
+                <button class="btn" style="background-color:#1B4A7D; color: white;" id="downloadBtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z"/>
+                </svg></button>
+                </div>
+                            <div class="col-3 ml-5">
+                                <input type="text" id="victim_ic_no" class="form-control" placeholder="NO. KAD PENGENALAN" />
+                            </div>
+                            <div class="col">
+                                <button id="searchBtn" class="btn" style="background-color:#1B4A7D; color: white;">Cari</button>
+                            </div>
+
+                            </div>
+                            
+                   
+
+                    <!-- Main content -->
+                    <div class = "form-row mt-3">
+                    <div class="card-body p-0">
+                <div class="table-responsive" id="dataTableContainer" style="display: none;">
+                    <table class="table m-0">
+                        <thead>
+                            <tr>
+                              <th style="width: 5%;">Bil</th>
+                              <th  style="width: 15%;">Nama Wakil Keluarga</th>
+                              <th  style="width: 10%;">No. Kad Pengenalan</th>
+                              <th  style="width: 10%;">No. Telefon</th>
+                              <th  style="width: 10%;">Ahli Keluarga</th>
+                              <th style ="width: 5%;"></th>
+                            </tr>
+                            </tr>
+                        </thead>
+                        <tbody id="submitTable">
+                    <!-- Data will be inserted here by JavaScript -->
+                </tbody>
+                    </table>
+        </div>
+        <div id="error-message" style="color: red; margin-top: 10px;"></div>
+    </div>
+</div>
+   <div class = "form-row mt-3">
+                    <div class="card-body p-0">
+                <div class="table-responsive" id="searchDataTableContainer" style="display: none;">
+                    <table class="table m-0">
+                        <thead>
+                            <tr>
+                              <th style="width: 5%;">Bil</th>
+                              <th  style="width: 20%;">Nama</th>
+                              <th  style="width: 15%;">No. Kad Pengenalan</th>
+                              <th  style="width: 10%;">Hubungan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="searchTable">
+                    <!-- Data will be inserted here by JavaScript -->
+                </tbody>
+                    </table>
+        </div>
+        <div id="error-message" style="color: red; margin-top: 10px;"></div>
+    </div>
+</div>
+    </div>
+            </div>
+            </div>
+            </div>
+            
+        <div class="modal fade" id="familyMembersModal" tabindex="-1" role="dialog" aria-labelledby="familyMembersModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="familyMembersModalLabel">Ahli Keluarga</h5>
+                    <button type="button" id="closeIcon" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Umur</th>
+                                <th>Hubungan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="familyMembersTableBody">
+                            <!-- Family members will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                     <button type="button" id="btnClose" class="btn btn-secondary" data-dismiss="modal">Tutup
+                    
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hidden container for PDF generation -->
+    <div id="pdfContainer" style="display: none;">
+       <div id="customText"></div>
+        <div id="content">
+            <table border="1" id="dynamicTable" class="table table-bordered">
+              <thead>
+            <tr>
+                <th>No. IC Ketua Keluarga</th>
+                <th>Nama Ketua Keluarga</th>
+                <th>Nama Mangsa</th>
+                <th>No. IC</th>
+                <th>Umur</th>
+                <th>Jantina</th>
+                <th>Kategori Umur</th>
+                <th>Kategori Khas</th>
+                <th>Hubungan</th>
+                <th>Alamat</th>
+                <th>No. Telefon</th>
+            </tr>
+        </thead>
+        <tbody id="victimListBody">
+            <!-- Data will be displayed here -->
+        </tbody>
+    </table>
+</div>
+    </div>
+
+    <!-- REQUIRED SCRIPTS -->
+
+    <!-- jQuery -->
+    <script src="css/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="css/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="css/adminlte.js"></script>
+
+    <!-- OPTIONAL SCRIPTS -->
+    <script src="css/Chart.min.js"></script>
+    
+    <script>
+document.getElementById('districtDropdown').addEventListener('change', function() {
+    const pps_district = this.value; // Change variable name to district_id
+
+    if (pps_district) {
+        const formData = new FormData();
+        formData.append('pps_district', pps_district);
+
+        fetch('fetch_pps.php', {
+            method: 'POST', // Change method to POST
+            body: formData // Use FormData to send data
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const cityDropdown = document.getElementById('cityDropdown');
+            cityDropdown.innerHTML = '<option value="" disabled selected>PILIH PPS</option>'; // Clear previous options and add default
+
+            data.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city.pps_id;
+                option.text = city.pps_name;
+                cityDropdown.add(option);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Reset district dropdown to selected-disabled value
+    document.getElementById('districtDropdown').selectedIndex = 0;
+    document.getElementById('cityDropdown').innerHTML = '<option value="" disabled selected>PILIH PPS</option>';
+});
+
+document.getElementById('submitBtn').addEventListener('click', function() {
+    const districtDropdown = document.getElementById('districtDropdown');
+    const cityDropdown = document.getElementById('cityDropdown');
+    const pps_id = cityDropdown.value; // Get the selected pps_id
+    const district_id = districtDropdown.value; // Get the selected district_id
+
+    if (!district_id && !pps_id) {
+        Swal.fire({
+        icon: 'error',
+        title: 'Ralat!',
+        text: 'SILA PILIH MUKIM DAN PPS.',
+        confirmButtonText: 'OK'
+    });
+        return;
+    }
+
+    if (!pps_id) {
+       Swal.fire({
+        icon: 'error',
+        title: 'Ralat!',
+        text: 'SILA PILIH PPS.',
+        confirmButtonText: 'OK'
+    });
+        return;
+    }
+
+    fetch(`fetch_data_fam.php?pps_id=${pps_id}`)
+        .then(response => response.json())
+        .then(data => {
+            const submitTable = document.getElementById('submitTable');
+            const errorMessage = document.getElementById('error-message');
+            submitTable.innerHTML = ''; // Clear existing data
+            errorMessage.textContent = ''; // Clear any previous error messages
+            document.getElementById('searchDataTableContainer').style.display = 'none';
+
+            if (data.length === 0) {
+                errorMessage.textContent = 'Tiada data bagi PPS yang telah dipilih.';
+                document.getElementById('dataTableContainer').style.display = 'none';
+            } else {
+                data.forEach((item, index) => {
+                    const row = document.createElement('tr');
+
+                    // Create table cells
+                    const cellIndex = document.createElement('td');
+                    cellIndex.textContent = index + 1;
+                    row.appendChild(cellIndex);
+
+                    const cellName = document.createElement('td');
+                    cellName.textContent = item.victim_name;
+                    row.appendChild(cellName);
+
+                    const cellIC = document.createElement('td');
+                    cellIC.textContent = item.victim_ic_no;
+                    row.appendChild(cellIC);
+
+                    const cellPhoneNo = document.createElement('td');
+                    cellPhoneNo.textContent = item.victim_phone_no;
+                    row.appendChild(cellPhoneNo);
+    
+                    const cellFamily = document.createElement('td');
+                    const buttonFamily = document.createElement('button');
+                    buttonFamily.textContent = 'Lihat Ahli Keluarga';
+                    buttonFamily.className = 'btn';
+                    buttonFamily.style.backgroundColor = '#0077B6';
+                    buttonFamily.style.color = 'white';
+                    buttonFamily.onclick = function() {
+                        showFamilyMembers(item.victim_ic_no);
+                    };
+                    cellFamily.appendChild(buttonFamily);
+                    row.appendChild(cellFamily);
+
+                    const cellWhatsapp = document.createElement('td');
+                    const buttonWhatsapp = document.createElement('button');
+                    buttonWhatsapp.innerHTML = '<i class="bi bi-whatsapp"></i>';
+                    buttonWhatsapp.className = 'btn btn-success';
+                    buttonWhatsapp.onclick = function() {
+                        sendWhatsAppMessage(item.victim_name, item.victim_ic_no, item.victim_phone_no);
+                    };
+                    cellWhatsapp.appendChild(buttonWhatsapp);
+                    row.appendChild(cellWhatsapp);
+                    // Append the row to the table body
+                    submitTable.appendChild(row);
+                });
+
+                // Show the table container
+                document.getElementById('dataTableContainer').style.display = 'block';
+            }
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
+
+       
+        
+ document.getElementById('searchBtn').addEventListener('click', function() {
+    const victim_ic_no = document.getElementById('victim_ic_no').value.trim(); // Get the victim's IC number from the input field
+
+    if (!victim_ic_no) {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: 'Sila masukkan nombor IC mangsa.',
+        confirmButtonText: 'OK'
+    });
+    return;
+}
+
+    // Clear previous search results
+    const searchTable = document.getElementById('searchTable');
+    const errorMessage = document.getElementById('error-message');
+    searchTable.innerHTML = ''; // Clear existing data
+    document.getElementById('dataTableContainer').style.display = 'none';
+    errorMessage.textContent = ''; // Clear any previous error messages
+    
+    fetch(`fetch_data_fam.php?victim_ic_no=${victim_ic_no}`)
+       .then(response => response.json())
+        .then(data => {
+            const submitTable = document.getElementById('submitTable');
+            const errorMessage = document.getElementById('error-message');
+            submitTable.innerHTML = ''; // Clear existing data
+            errorMessage.textContent = ''; // Clear any previous error messages
+            document.getElementById('searchDataTableContainer').style.display = 'none';
+
+            if (data.length === 0) {
+                Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Nombor Kad Pengenalan tidak wujud.',
+                confirmButtonText: 'OK'
+            });
+                document.getElementById('dataTableContainer').style.display = 'none';
+            } else {
+                data.forEach((item, index) => {
+                    const row = document.createElement('tr');
+
+                    // Create table cells
+                    const cellIndex = document.createElement('td');
+                    cellIndex.textContent = index + 1;
+                    row.appendChild(cellIndex);
+
+                    const cellName = document.createElement('td');
+                    cellName.textContent = item.victim_name;
+                    row.appendChild(cellName);
+
+                    const cellIC = document.createElement('td');
+                    cellIC.textContent = item.victim_ic_no;
+                    row.appendChild(cellIC);
+
+                    const cellPhoneNo = document.createElement('td');
+                    cellPhoneNo.textContent = item.victim_phone_no;
+                    row.appendChild(cellPhoneNo);
+    
+                    const cellFamily = document.createElement('td');
+                    const buttonFamily = document.createElement('button');
+                    buttonFamily.textContent = 'Lihat Ahli Keluarga';
+                    buttonFamily.className = 'btn';
+                    buttonFamily.style.backgroundColor = '#0077B6';
+                    buttonFamily.style.color = 'white';
+                    buttonFamily.onclick = function() {
+                        showFamilyMembers(item.victim_ic_no);
+                    };
+                    cellFamily.appendChild(buttonFamily);
+                    row.appendChild(cellFamily);
+
+                    const cellWhatsapp = document.createElement('td');
+                    const buttonWhatsapp = document.createElement('button');
+                    buttonWhatsapp.innerHTML = '<i class="bi bi-whatsapp"></i>';
+                    buttonWhatsapp.className = 'btn btn-success';
+                    buttonWhatsapp.onclick = function() {
+                        sendWhatsAppMessage(item.victim_name, item.victim_ic_no, item.victim_phone_no);
+                    };
+                    cellWhatsapp.appendChild(buttonWhatsapp);
+                    row.appendChild(cellWhatsapp);
+
+                    // Append the row to the table body
+                    submitTable.appendChild(row);
+                });
+
+                // Show the table container
+                document.getElementById('dataTableContainer').style.display = 'block';
+            }
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
+
+         function showFamilyMembers(family_id) {
+            fetch(`fetch_data_fam.php?family_id=${family_id}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error('Error:', data.error);
+                        alert('Error fetching family members: ' + data.error);
+                        return;
+                    }
+                    
+                    const tableBody = document.getElementById('familyMembersTableBody');
+                    tableBody.innerHTML = ''; // Clear existing table rows
+
+                    if (data.length > 0) {
+                        data.forEach(member => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${member.victim_name}</td>
+                                <td>${member.victim_age}</td>
+                                <td>${member.victim_relation}</td>
+                            `;
+                            tableBody.appendChild(row);
+                        });
+                    } else {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `<td>No family members found.</td>`;
+                        tableBody.appendChild(row);
+                    }
+
+                    // Show the modal
+                    $('#familyMembersModal').modal('show');
+                })
+                .catch(error => {
+                    console.error('Error fetching family members:', error);
+                    alert('Error fetching family members: ' + error.message);
+                });
+        }
+        
+          document.getElementById('downloadBtn').addEventListener('click', function() {
+                const selectedCity = document.getElementById('cityDropdown').value;
+                const selectedCityName = document.getElementById('cityDropdown').options[document.getElementById('cityDropdown').selectedIndex].text;
+            
+                const customText = document.getElementById('customText');
+            
+                // Show the custom text element
+                customText.style.display = 'block';
+            
+                if (selectedCity) {
+                    $.ajax({
+                        url: "fetch_data_fam_full.php?pps_id=" + selectedCity,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            console.log("Received data:", data); // Log received data
+            
+                            if (data.data.length > 0) { // Check the length of 'data.data'
+                                var html = '';
+                                var previousHeadFamily = ''; // Track previous head_family_ic_no
+                                var rowspanCount = 0; // Track rowspan count
+            
+                                data.data.forEach(function(item, index) {
+                                    if (item.head_family_ic_no !== previousHeadFamily) {
+                                        // Start a new set of rows for a new head family
+                                        previousHeadFamily = item.head_family_ic_no;
+                                        rowspanCount = data.familyCounts[item.head_family_ic_no];
+            
+                                        // Only add rowspan for the first row of each family group
+                                        html += '<tr>';
+                                        html += '<td rowspan="' + rowspanCount + '">' + item.head_family_ic_no + '</td>';
+                                        html += '<td rowspan="' + rowspanCount + '">' + item.head_family_name + '</td>';
+                                        html += '<td>' + item.victim_name + '</td>';
+                                        html += '<td>' + item.victim_ic_no + '</td>';
+                                        html += '<td>' + item.victim_age + '</td>';
+                                        html += '<td>' + item.victim_gender + '</td>';
+                                        html += '<td>' + item.victim_age_categ + '</td>';
+                                        html += '<td>' + item.victim_special_categ + '</td>';
+                                        html += '<td>' + item.victim_relation + '</td>';
+                                        html += '<td rowspan="' + rowspanCount + '">' + item.victim_address + '</td>';
+                                        html += '<td rowspan="' + rowspanCount + '">' + item.victim_phone_no + '</td>';
+                                        html += '</tr>';
+                                    } else {
+                                        // Continue adding rows to the current head family group
+                                        html += '<tr>';
+                                        html += '<td>' + item.victim_name + '</td>';
+                                        html += '<td>' + item.victim_ic_no + '</td>';
+                                        html += '<td>' + item.victim_age + '</td>';
+                                        html += '<td>' + item.victim_gender + '</td>';
+                                        html += '<td>' + item.victim_age_categ + '</td>';
+                                        html += '<td>' + item.victim_special_categ + '</td>';
+                                        html += '<td>' + item.victim_relation + '</td>';
+                                        html += '</tr>';
+                                    }
+                                });
+            
+                                $('#victimListBody').html(html); // Inject HTML into tbody
+            
+                                // Generate the PDF after injecting the table data
+                                generatePDF(selectedCityName);
+                            } else {
+                                $('#victimListBody').html('<tr><td colspan="10">No data available</td></tr>');
+                                customText.style.display = 'none'; // Hide custom text if no data
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error:", xhr.responseText); // Log error response
+                            $('#victimListBody').html('<tr><td colspan="10">Error loading data</td></tr>');
+                            customText.style.display = 'none'; // Hide custom text on error
+                        }
+                    });
+                } else {
+                    alert('Please select a city.');
+                }
+            });
+            
+            function generatePDF(selectedCityName) {
+                // Create a temporary container to combine custom text and content
+                const tempContainer = document.createElement('div');
+                tempContainer.appendChild(customText.cloneNode(true));
+                const contentForPDF = document.getElementById('content').cloneNode(true);
+                contentForPDF.classList.add('pdf-content'); // Add the class for PDF content styling
+                tempContainer.appendChild(contentForPDF);
+            
+                // Configure html2pdf options
+                const options = {
+                    margin: 0.5,
+                    filename: `Rekod_Maklumat_Mangsa_${selectedCityName}.pdf`, // Dynamic filename
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'in', format: [18, 8.5], orientation: 'landscape' } // 14 inches width, 8.5 inches height
+                };
+            
+                // Generate the PDF
+                html2pdf().from(tempContainer).set(options).save().then(() => {
+                    // Hide the custom text element after PDF generation
+                    customText.style.display = 'none';
+                });
+            }
+    
+         window.sendWhatsAppMessage = function(headName, familyIC, phoneNumber) {
+            // Get the selected city name
+            const cityDropdown = document.getElementById('cityDropdown');
+            const selectedCity = cityDropdown.options[cityDropdown.selectedIndex].text;
+        
+            // Fetch the list of victims based on familyIC
+            fetch(`fetch_data_fam.php?family_id=${familyIC}`)
+                .then(response => response.json())
+                .then(victims => {
+                    // Construct the list of victims
+                    const victimList = victims.map(victim => victim.victim_name).join(', ');
+                    
+                    // Construct the message
+                    const message = `Selamat Sejahtera ${headName}, No. Kad Pengenalan ${familyIC} ini adalah mesej automatik dari FLIEC. Anda dan keluarga anda sedang berada di ${selectedCity}. Ahli keluarga anda: ${victimList}.`;
+                    
+                    // Construct the WhatsApp URL
+                    const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+                    
+                    // Open the WhatsApp URL in a new tab
+                    window.open(whatsappURL, '_blank');
+                })
+                .catch(error => console.error('Error fetching victims:', error));
+        };
+        
+         $('#btnLogout').click(function (e) {
+    e.preventDefault();
+    
+    $.ajax({
+        url: 'logout.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function (response) {
+            if (response.success) {
+                // If logout is successful, redirect to index.html
+                window.location.href = 'index.html';
+            } else {
+                alert('Logout failed. Please try again.');
+            }
+        },
+        error: function () {
+            alert('An error occurred while trying to log out.');
+        }
+    });
+});
+    
+    $('#closeIcon').on('click', function () {
+        $('#familyMembersModal').modal('hide'); // Hide modal
+    });
+    
+    $('#btnClose').on('click', function () {
+        $('#familyMembersModal').modal('hide'); // Hide modal
+    });
+
+</script>
+    </body>
+</html>
+

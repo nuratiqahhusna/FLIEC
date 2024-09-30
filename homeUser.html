@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Homepage FliEC</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="css/aos.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/boxicons.min.css" rel="stylesheet">
+  <link href="css/glightbox.min.css" rel="stylesheet">
+  <link href="css/remixicon.css" rel="stylesheet">
+  <link href="id22257398_fliec/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Template Main CSS File -->
+  <link href="css/styleHome.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Arsha
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="index.html">FliEC</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+         
+          <li><a class="nav-link scrollto" href="#fam">Ahli Keluarga</a></li>
+          <li><a class="nav-link scrollto" href="#services">Talian kecemasan</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Poster</a></li>
+          <li><a class="nav-link scrollto" href="#faq">FaQ</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>Flood Victim Evacuation Centre Management System</h1>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="img/flood-img.png" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Us Section ======= -->
+   
+    
+    <!-- ======= Statistic Section ======= -->
+    
+  
+    
+    
+    
+     
+    <!-- ======= Registration Section ======= -->
+    
+
+    <!-- End Registration Section -->
+
+
+    
+      <!-- ======= fam Section ======= -->
+    
+ <section id="fam" class="fam">
+    <div class="container" data-aos="fade-up" style="text-align: center">
+       
+        <div class="section-title">
+            <h2>AHLI KELUARGA</h2>
+            <p>Senarai ahli keluarga yang berdaftar.</p>
+        </div>
+         <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('fetch_victim.php')
+            .then(response => response.json())
+            .then(data => {
+                let table = document.getElementById('data-table');
+                data.forEach(row => {
+                    let tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td style="padding: 8px; border: 1px solid #ddd;">${row.victim_ic_no}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">${row.victim_name}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">${row.victim_age}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">${row.victim_gender}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">${row.victim_age_categ}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">${row.victim_special_categ}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">${row.victim_relation}</td>
+                    `;
+                    table.appendChild(tr);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    });
+</script>
+        <div style="overflow-x: auto; margin: auto; width: 80%;">
+            <table style="margin: auto; width: 100%; border-collapse: collapse" border="1" >
+                <thead>
+                    <tr style="background-color: #A1BFDD;">
+                        <th style="padding: 12px; border: 1px solid #ddd;">IC NO</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">NAMA</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">UMUR</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">JANTINA</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">KATEGORI UMUR</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">KATEGORI KHAS</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">HUBUNGAN</th>
+                    </tr>
+                </thead>
+                <tbody id="data-table">
+                    <!-- Data will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+       <br>
+        <button style="padding: 10px 20px; background-color: #334EAC; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 20px; display: block; margin: 0 auto;" onclick="window.location.href='addVictimRegisterFam.html'">TAMBAH AHLI KELUARGA</button>
+    </div>
+</section>
+
+
+    <script>
+       document.getElementById("addNewBtn").addEventListener("click", function() {
+    // Redirect to the other page where you can add new data
+    window.location.href = "registerVictimFam.html";
+});
+ 
+       
+    </script>
+      
+    <!-- End fam Section -->
+    
+    
+
+    <!-- ======= Emergency Directory Section ======= -->
+   <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>TALIAN KECEMASAN</h2>
+          <p>Talian kecemasan di Batu Pahat.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box" onclick="alert('HOTLINE APM JOHOR BATU PAHAT - 07-2349706')">
+              <div class="icon"><i class="fa-solid fa-phone"></i></div>
+              <h4><a href="">APM</a></h4>
+              <p>Angkatan Pertahanan Malaysia</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box" onclick="alert('TALIAN HOTLINE KKM BATU PAHAT- 07-4341011 / 4341021')">
+              <div class="icon"><i class="fa-solid fa-phone"></i></div>
+              <h4><a href="">KKM</a></h4>
+              <p>Kementerian Kesihatan Malaysia</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box" onclick="alert('TALIAN HOTLINE JKM BATU PAHAT - 07-4341377')">
+              <div class="icon"><i class="fa-solid fa-phone"></i></div>
+              <h4><a href="">JKM</a></h4>
+              <p>Jabatan Kebajikan Masyarakat</p>
+            </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box" onclick="alert ('TALIAN HOTLINE BOMBA BATU PAHAT - 074338444')">
+              <div class="icon"><i class="fa-solid fa-phone"></i></div>
+              <h4><a href="">BOMBA DAN PENYELAMAT</a></h4>
+              <p>Bomba Malaysia</p>
+            </div>
+            </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Services Section -->
+
+    <!-- ======= Poster Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>POSTER</h2>
+        </div>
+
+        <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        </ul>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="img/poster1_FYP.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Langkah penjagaan kesihatan </h4>
+              <a href="img/poster1_FYP.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Langkah penjagaan kesihatan semasa banjir"><i class="fa-solid fa-expand"></i></a>
+             
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="img/poster2_fyp.png" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Langkah penjagaan kesihatan</h4>
+              
+              <a href="img/poster2_fyp.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Langkah penjagaan kesihatan semasa banjir"><i class="fa-solid fa-expand"></i></a>
+             
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="img/poster3_fyp.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>9 langkah keselamatan</h4>
+              
+              <a href="img/poster3_fyp.jpg" data-gallery="portfolioGallery"   class="portfolio-lightbox preview-link" title="9 langkah keselamatan"><i class="fa-solid fa-expand"></i></a>
+             
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End poster Section -->
+    
+    <!-- ======= Frequently Asked Questions Section ======= -->
+      <section id="faq" class="faq section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+          <p>Soalan-soalan yang kerap diajukan sewaktu di pusat pemindahan sementara.</p>
+        </div>
+
+        <div class="faq-list">
+          <ul>
+            <li data-aos="fade-up" data-aos-delay="100">
+             <i class="fa-solid fa-question icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Tahukah anda tempoh masa yang di ambil untuk air banjir surut ? <i class="fa-solid fa-chevron-up icon-show "></i><i class="fa-solid fa-chevron-down icon-close"></i></a>
+              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                <p>
+                  Malangnya, sukar untuk kami tentukan dengan pasti. Kami perlu menunggu kemas kini dari pihak berkuasa. mereka akan mendapatkan maklumat yang tepat berkaitan banjir dan maklumkan kepada anda.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="fa-solid fa-question icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Saya kehabisan barang keperluan. Dimanakah tempat yang saya boleh dapatkan barang tersebut <i class="fa-solid fa-chevron-up icon-show "></i><i class="fa-solid fa-chevron-down icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                 Sekiranya barang keperluan anda telah habis. Anda boleh terus ke kakitangan Jabatan Kebajikan Masyarakat yang sedang bertugas dan memaklumkan kepada mereka. Sekiranya barang tersebut telah kehabisan stok. Pihak JKM akan kemas kini data tersebut untuk mendapatkan barang tersebut.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="300">
+               <i class="fa-solid fa-question icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Saya berasa cemas dan takut. Adakah sesiapa yang saya boleh bercakap? <i class="fa-solid fa-chevron-up icon-show "></i><i class="fa-solid fa-chevron-down icon-close"></i></a>
+              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                 Kami faham anda dan cakna dengan perasaan bimbang anda. Pihak Kementerian Kesihatan Malaysia telah menyediakan beberapa slot kaunseling di pusat pemindahan banjir. Sekiranya, perasaan bimbang anda tidak dapat dikawal, segera menghubungi talian kecemasan kesihatan mental atau memberitahu segera kakitangan kesihatan yang sedang bertugas waktu tersebut.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="400">
+               <i class="fa-solid fa-question icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Saya mempunyai masalah kesihatan. Adakah doktor atau jururawat yang boleh didapati di pusat pemindahan banjir?<i class="fa-solid fa-chevron-up icon-show "></i><i class="fa-solid fa-chevron-down icon-close"></i></a>
+              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Pihak Kementerian Kesihatan Malaysia menyediakan perkhidamatan doktor dan jururawat di PPS, anda akan diperiksa secara berkala.Sekiranya anda memerlukan rawatan susulan yang tetap, pihak KKM akan mengaturkan urusan anda untuk mendapatkan rawatan di Hospital terdekat. 
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="500">
+              <i class="fa-solid fa-question icon-help"></i><a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Saya bimbang tentang barangan dan kerosakan di kawasan rumah. Adakah terdapat sebarang bantuan yang tersedia untuk membantu membersihkan rumah serta penilaian kerosakan barangan? <i class="fa-solid fa-chevron-up icon-show "></i><i class="fa-solid fa-chevron-down icon-close"></i></a>
+              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                 Kerajaan cakna berkaitan isu tersebut dengan memberi bantuan dalam bentuk kewangan bagi kerosakan yang di alami mangsa. Bagi urusan pembersihan kawasan rumah, terdapat pelbagai agensi dan pihak yang menawarkan bantuan secara sukarela untuk urusan pembersihan. 
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+  </main>
+  
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>FliEC</span></strong>. All Rights Reserved
+      </div>
+     
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="css/aos.js"></script>
+  <script src="css/bootstrap.bundle.min.js"></script>
+  <script src="css/glightbox.min.js"></script>
+  <script src="css/isotope.pkgd.min.js"></script>
+  <script src="css/swiper-bundle.min.js"></script>
+  <script src="css/noframework.waypoints.js"></script>
+  <script src="css/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="css/mainHome.js"></script>
+
+</body>
+
+</html>
